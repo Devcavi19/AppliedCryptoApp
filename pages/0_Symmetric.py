@@ -11,6 +11,24 @@ st.set_page_config(
     page_icon="https://img.icons8.com/?size=100&id=WMWP1MqUZRiS&format=png&color=000000",
 )
 
+# Add custom CSS for consistent styling across pages
+st.markdown("""
+    <style>
+    .stAppHeader {
+        background-color: #00031fff !important;
+    }
+    
+    .stApp {
+        background-color: #00031fff; /* Dark background color */
+    }
+    
+    /* Sidebar background color */
+    [data-testid="stSidebar"] {
+        background-color: #101c3bff; /* Dark blue sidebar color */
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 import os
 import sys
 import base64
