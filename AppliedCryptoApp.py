@@ -3,7 +3,7 @@ Final Project Applied Cryptography CSAC 329
 
 This application provides implementations of various cryptographic algorithms including:
 - Symmetric: Caesar Cipher, Vigenère Cipher, Vernam Cipher (One-Time Pad)
-- Asymmetric: Diffie-Hellman Key Exchange, RSA (including M2Crypto implementation)
+- Asymmetric: Diffie-Hellman Key Exchange, RSA 
 - Hash Functions: SHA-1, SHA-256, SHA-512, MD5
 
 The application features a user-friendly Streamlit interface with Medium-style formatting,
@@ -27,6 +27,43 @@ def load_css():
         <style>
         /* Medium-like styling */
         @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+        
+        .stAppHeader {
+            background-color: #00031fff !important;
+        }
+        
+        .stApp {
+            background-color: #00031fff; /* Dark background color - change this to your preferred color */
+        }
+        
+        /* Sidebar background color */
+        [data-testid="stSidebar"] {
+            background-color: #101c3bff; /* Dark blue sidebar color - change to your preferred color */
+        }
+        
+        /* Sidebar title text */
+        [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+            color: rgb(0, 255, 163);
+        }
+        
+        /* Sidebar navigation items */
+        [data-testid="stSidebarNav"] {
+            background-color: #101c3bff; 
+        }
+        
+        [data-testid="stSidebarNav"] span {
+            color: #fafafaff;
+        }
+        
+        /* Sidebar navigation item on hover */
+        [data-testid="stSidebarNav"] a:hover {
+            background-color: rgba(0, 255, 163, 0.1);
+        }
+        
+        /* Sidebar navigation selected item */
+        [data-testid="stSidebarNav"] span:hover {
+            color: rgb(0, 255, 163);
+        }
         
         html, body, [class*="css"] {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;

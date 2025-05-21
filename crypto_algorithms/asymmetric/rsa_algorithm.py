@@ -275,3 +275,80 @@ def decrypt_with_private_key(encrypted_message_base64, private_key_pem):
     rsa_instance.load_key_pair(private_key_pem=private_key_pem)
     encrypted = base64.b64decode(encrypted_message_base64)
     return rsa_instance.decrypt(encrypted)
+
+# Add helper functions for simpler usage in the app
+def encrypt_message(message_bytes, public_key):
+    """
+    Encrypt a message using a public key.
+    
+    Args:
+        message_bytes (bytes): The message to encrypt as bytes
+        public_key: The public key object
+        
+    Returns:
+        bytes: The encrypted message
+    """
+    try:
+        # Use the cryptography library for encryption
+        ciphertext = public_key.encrypt(
+            message_bytes,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        return ciphertext
+    except Exception as e:
+        raise Exception(f"Encryption error: {str(e)}")
+
+def decrypt_message(ciphertext, private_key):
+    """
+    Decrypt a message using a private key.
+    
+    Args:
+        ciphertext (bytes): The encrypted message
+        private_key: The private key object
+        
+    Returns:
+        str: The decrypted message
+    """
+    try:
+        # Use the cryptography library for decryption
+        plaintext = private_key.decrypt(
+            ciphertext,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        return plaintext.decode('utf-8')
+    except Exception as e:
+        raise Exception(f"Decryption error: {str(e)}")
+
+# Function to generate keys for the app
+def generate_keys(key_size=2048):
+    """
+    Generate a new RSA key pair and return both keys.
+    
+    Args:
+        key_size (int): The key size in bits
+        
+    Returns:
+        dict: Dictionary containing public and private key objects
+    """
+    # Generate private key
+    private_key = crypto_rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=key_size,
+        backend=default_backend()
+    )
+    
+    # Get public key
+    public_key = private_key.public_key()
+    
+    return {
+        'public_key': public_key,
+        'private_key': private_key
+    }
