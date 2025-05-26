@@ -136,6 +136,11 @@ AppliedCryptoApp/
 ```
 
 ------------------------------------------
+### Video link
+
+**Video demonstration link:** [AppliedCryptoApp Demonstration](https://drive.google.com/file/d/1p60VA47kXEy0_aFuu__SmAgiH8BBkjqG/view?usp=sharing)
+
+------------------------------------------
 ### Contributors
 
 - Herald Carl Avila - [GitHub](https://github.com/Devcavi19)
